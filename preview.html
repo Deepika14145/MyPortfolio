@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deepika Sharma | Portfolio</title>
+<meta name="description" content="Deepika Sharma, final-year IT student at PICT Pune. AI projects, full-stack apps and a tiny pixel world to walk around in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens: day is the base, night is the pixel-sky default ---------- */
+:root{
+  --bg:#fff0f7; --panel:#ffffff; --panel2:#ffe6f2;
+  --edge:#2b1d52; --ink:#2b1d52; --muted:#6b5b98; --onacc:#2b1d52;
+  --pink:#ff6fb0; --mint:#46dba8; --butter:#ffd24d; --sky:#5db4ff; --lav:#b39cff; --coral:#ff9372;
+  --gold:#e8b64a; --grid:rgba(43,29,82,.06); --shadow:rgba(43,29,82,.28);
+  --hi:rgba(255,255,255,.8); --lo:rgba(43,29,82,.09);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1230; --panel:#2f2259; --panel2:#3b2c70;
+    --edge:#0d0720; --ink:#fff1e3; --muted:#c3b6ec; --onacc:#1a1230;
+    --pink:#ff7ab8; --mint:#6df2c8; --butter:#ffd966; --sky:#6ab8ff; --lav:#b79cff; --coral:#ff9a76;
+    --gold:#e8b64a; --grid:rgba(255,255,255,.045); --shadow:rgba(6,2,16,.6);
+    --hi:rgba(255,255,255,.14); --lo:rgba(0,0,0,.22);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1230; --panel:#2f2259; --panel2:#3b2c70;
+  --edge:#0d0720; --ink:#fff1e3; --muted:#c3b6ec; --onacc:#1a1230;
+  --pink:#ff7ab8; --mint:#6df2c8; --butter:#ffd966; --sky:#6ab8ff; --lav:#b79cff; --coral:#ff9a76;
+  --gold:#e8b64a; --grid:rgba(255,255,255,.045); --shadow:rgba(6,2,16,.6);
+  --hi:rgba(255,255,255,.14); --lo:rgba(0,0,0,.22);
+  color-scheme:dark;
+}
+
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px);scroll-behavior:smooth;cursor:var(--cur,auto)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background-color:var(--bg);color:var(--ink);
+  background-image:linear-gradient(var(--grid) 4px,transparent 4px),linear-gradient(90deg,var(--grid) 4px,transparent 4px);
+  background-size:48px 48px;
+  font-family:'Pixelify Sans','Trebuchet MS',system-ui,sans-serif;font-size:20px;line-height:1.5;
+  overflow-x:hidden;
+}
+a,button,[role="tab"]{cursor:var(--cur2,pointer)}
+a{color:inherit}
+h1,h2,h3{font-family:'Press Start 2P','Courier New',monospace;font-weight:400;line-height:1.5;margin:0}
+p{margin:0}
+:focus-visible{outline:4px dashed var(--butter);outline-offset:4px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-80px;z-index:50;background:var(--butter);color:var(--onacc);padding:8px 14px;text-decoration:none}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 8px)}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+i[data-pix]{display:inline-flex;line-height:0}
+
+/* ---------- pixel building blocks ---------- */
+.px{
+  background:var(--panel);margin:4px;
+  box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge),
+    inset 4px 4px 0 0 var(--hi),inset -4px -4px 0 0 var(--lo);
+}
+.drop{filter:drop-shadow(6px 6px 0 var(--shadow))}
+.btn{
+  display:inline-block;margin:6px;padding:14px 18px;border:0;text-decoration:none;
+  font-family:'Press Start 2P','Courier New',monospace;font-size:12px;line-height:1.4;
+  color:var(--onacc);background:var(--pink);
+  box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge),
+    inset -4px -4px 0 0 rgba(0,0,0,.2),inset 4px 4px 0 0 rgba(255,255,255,.38);
+}
+.btn:active{transform:translateY(4px);box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge)}
+.btn.alt{background:var(--butter)}
+.btn.ghost{background:var(--panel2);color:var(--ink)}
+.btn.sm{font-size:10px;padding:10px 12px}
+.tag{
+  display:inline-block;margin:4px 4px 4px 2px;padding:0 8px;font-size:16px;line-height:1.4;
+  background:var(--panel2);color:var(--ink);
+  box-shadow:0 -2px 0 0 var(--edge),0 2px 0 0 var(--edge),-2px 0 0 0 var(--edge),2px 0 0 0 var(--edge);
+}
+.ground{height:16px;border-block:4px solid var(--edge);background-color:var(--mint);
+  background-image:repeating-linear-gradient(90deg,transparent 0 16px,rgba(0,0,0,.14) 16px 32px)}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--panel);
+  border-bottom:4px solid var(--edge);box-shadow:0 4px 0 0 var(--shadow)}
+.bar-in{max-width:1120px;margin:auto;padding:8px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Press Start 2P','Courier New',monospace;font-size:12px}
+.bar nav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{padding:6px 12px;text-decoration:none;white-space:nowrap}
+.bar nav a[aria-current="true"]{background:var(--butter);color:var(--onacc)}
+.tools{display:flex;gap:8px}
+.chipbtn{font:inherit;font-size:16px;padding:2px 10px;border:0;background:var(--panel2);color:var(--ink);
+  box-shadow:0 -2px 0 0 var(--edge),0 2px 0 0 var(--edge),-2px 0 0 0 var(--edge),2px 0 0 0 var(--edge)}
+.chipbtn[aria-pressed="true"]{background:var(--mint);color:var(--onacc)}
+
+/* ---------- hero + stage ---------- */
+.hero{padding-top:36px;padding-bottom:64px}
+.hero h1{font-size:clamp(22px,4.6vw,42px);margin-bottom:14px}
+.lede{max-width:34em;font-size:22px;margin-bottom:26px}
+.stage{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#150c2e;outline-offset:8px}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;display:block}
+#doors{position:absolute;inset:0;pointer-events:none}
+.door{position:absolute;pointer-events:auto;background:transparent;border:0;padding:0;color:var(--ink)}
+.door span{position:absolute;left:50%;bottom:100%;transform:translate(-50%,-6px);white-space:nowrap;
+  font-size:clamp(11px,1.3vw,16px);line-height:1.3;padding:0 8px;background:var(--panel);
+  box-shadow:0 -2px 0 0 var(--edge),0 2px 0 0 var(--edge),-2px 0 0 0 var(--edge),2px 0 0 0 var(--edge)}
+.door.near span{background:var(--butter);color:var(--onacc)}
+.door:focus-visible{outline:3px dashed var(--butter);outline-offset:0}
+.hud{position:absolute;left:12px;top:12px;display:flex;gap:10px;pointer-events:none}
+.hud-i{display:flex;align-items:center;gap:8px;padding:2px 12px;font-size:18px;background:var(--panel);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.hud-i b{font-family:'Press Start 2P','Courier New',monospace;font-weight:400;font-size:13px}
+.say{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);max-width:88%;text-align:center;
+  padding:4px 14px;font-size:18px;background:var(--panel);pointer-events:none;
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.toast{position:absolute;left:50%;top:14px;transform:translateX(-50%);max-width:70%;text-align:center;
+  padding:6px 16px;font-size:18px;background:var(--butter);color:var(--onacc);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.toast[hidden],.say[hidden]{display:none}
+.toast a{font-weight:700}
+.pad{display:none}
+.keys{margin-top:22px;color:var(--muted);max-width:44em;font-size:18px}
+@media (pointer:coarse){
+  .pad{display:flex;justify-content:space-between;position:absolute;left:8px;right:8px;bottom:8px;pointer-events:none}
+  .pad div{display:flex;gap:8px}
+  .pad button{pointer-events:auto;touch-action:none;width:48px;height:48px;border:0;color:var(--onacc);background:var(--sky);
+    font-family:'Press Start 2P','Courier New',monospace;font-size:14px;
+    box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge),inset -3px -3px 0 0 rgba(0,0,0,.2)}
+  .pad button[data-k="e"]{background:var(--butter)}
+  .pad button[data-k="j"]{background:var(--pink)}
+  .say{bottom:70px}
+  .toast{top:56px;max-width:90%}
+}
+@media (max-width:640px){
+  .door span{display:none}.door.near span{display:block}
+  .hud-i{font-size:15px;padding:0 8px}
+}
+
+/* ---------- sections ---------- */
+.sec{padding-top:72px;padding-bottom:72px}
+.sec h2{font-size:clamp(16px,2.8vw,24px);margin-bottom:12px}
+.sub{color:var(--muted);max-width:40em;margin-bottom:8px}
+
+/* player card */
+.player{display:grid;grid-template-columns:260px 1fr;gap:36px;margin-top:28px;align-items:start}
+.select{padding:20px 16px 18px;text-align:center;position:relative}
+.select canvas{width:180px;height:260px;image-rendering:pixelated;display:block;margin:34px auto 6px;cursor:var(--cur2,pointer)}
+.bubble{position:absolute;left:14px;right:14px;top:14px;padding:4px 10px;font-size:17px;background:var(--butter);color:var(--onacc);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.cap{font-size:16px;color:var(--muted);margin-bottom:8px}
+.swatches{display:flex;justify-content:center;gap:12px}
+.sw{width:30px;height:30px;border:0;padding:0;
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.sw[aria-pressed="true"]{outline:4px solid var(--ink);outline-offset:3px}
+.sheet{padding:26px 28px}
+.sheet p+p{margin-top:12px}
+.sheet dl{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:22px 0 18px}
+.sheet dt{color:var(--muted)}
+.sheet dd{margin:0}
+.hp{display:flex;align-items:center;gap:14px}
+.hp span{color:var(--muted)}
+.hp-bar{flex:1;height:22px;background:var(--panel2);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.hp-bar i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--mint) 0 10px,transparent 10px 12px)}
+.hp b{font-family:'Press Start 2P','Courier New',monospace;font-weight:400;font-size:13px}
+
+/* cartridges */
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:40px 30px;margin-top:30px}
+.cart{display:flex;flex-direction:column;position:relative}
+.cart .label{margin:14px 14px 0;padding:14px 14px 12px;background:var(--pc);color:var(--onacc);
+  box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge),inset -4px -4px 0 0 rgba(0,0,0,.14),inset 4px 4px 0 0 rgba(255,255,255,.35)}
+.cart h3{font-size:15px;margin-bottom:6px}
+.cart .kind{font-size:17px}
+.cart .body{padding:18px 18px 8px;flex:1}
+.cart .live{margin-top:10px;font-size:17px;color:var(--muted);word-break:break-all}
+.cart .live a{color:var(--ink);font-weight:700}
+.cart .btns{margin:12px -6px 0}
+.pins{height:20px;margin:6px 14px 0;border-top:4px solid var(--edge);
+  background:repeating-linear-gradient(90deg,var(--gold) 0 6px,transparent 6px 12px)}
+.more{margin-top:34px;color:var(--muted)}
+.more a{color:var(--ink)}
+
+/* experience */
+.experience-list{display:grid;gap:28px;margin-top:28px}
+.exp-card{padding:24px 26px;position:relative}
+.exp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:14px}
+.exp-title{font-family:'Press Start 2P','Courier New',monospace;font-size:15px;line-height:1.5}
+.exp-role{font-size:18px;color:var(--muted);margin-top:6px}
+.exp-date{font-family:'Press Start 2P','Courier New',monospace;font-size:11px;background:var(--butter);color:var(--onacc);padding:8px 10px;white-space:nowrap}
+.exp-card ul{margin:14px 0 14px;padding-left:24px}
+.exp-card li{margin-bottom:8px}
+.exp-card .tag{margin-top:4px}
+.exp-note{margin-top:12px;color:var(--muted);font-size:17px}
+
+/* inventory */
+.bag{margin-top:28px;padding:22px 24px 24px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.tabs button{font:inherit;font-size:18px;padding:2px 14px;border:0;background:var(--panel2);color:var(--ink);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.tabs button[aria-selected="true"]{background:var(--butter);color:var(--onacc)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:18px}
+.slot{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6px;border:0;
+  background:var(--c);color:var(--onacc);font-family:inherit;font-size:15px;line-height:1.15;
+  box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge),inset -4px -4px 0 0 rgba(0,0,0,.16),inset 4px 4px 0 0 rgba(255,255,255,.32)}
+.slot b{font-family:'Press Start 2P','Courier New',monospace;font-weight:400;font-size:15px}
+.slot[aria-pressed="true"]{transform:translateY(-6px);outline:4px solid var(--ink);outline-offset:4px}
+.detail{margin-top:26px;min-height:3em;padding:8px 14px;background:var(--panel2)}
+.detail b{font-weight:700}
+
+/* quest log */
+.log{list-style:none;margin:28px 4px 0;padding:10px 24px}
+.log li{display:grid;grid-template-columns:30px 150px 1fr;gap:16px;padding:14px 0;align-items:start}
+.log li+li{border-top:4px dotted var(--lo)}
+.box{width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--panel2);color:var(--onacc);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.box.done{background:var(--mint)}
+.when{color:var(--muted)}
+.log strong{font-weight:700}
+.now .box{animation:blip 1s steps(1) infinite}
+@keyframes blip{50%{background:var(--butter)}}
+.badges{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:30px;align-items:center}
+.badges p{color:var(--muted);margin-right:6px}
+
+/* continue screen */
+.arcade{margin:4px;padding:56px 24px 52px;text-align:center;color:#fff1e3;background-color:#1a1230;
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 2px,transparent 2px 4px);
+  box-shadow:0 -4px 0 0 #0d0720,0 4px 0 0 #0d0720,-4px 0 0 0 #0d0720,4px 0 0 0 #0d0720,0 0 0 12px var(--pink),0 0 0 16px var(--edge)}
+.count{font-family:'Press Start 2P','Courier New',monospace;font-size:clamp(48px,11vw,100px);line-height:1.2;color:#ffd966;
+  text-shadow:4px 0 0 #0d0720,-4px 0 0 #0d0720,0 4px 0 #0d0720,0 -4px 0 #0d0720,6px 6px 0 #ff7ab8}
+.arcade h2{font-size:clamp(18px,3vw,26px);margin:10px 0 16px}
+.arcade p.msg{max-width:30em;margin:0 auto 20px}
+.mailtxt{margin-top:14px;color:#c3b6ec;user-select:all}
+
+footer{padding:28px 20px 40px;text-align:center;color:var(--muted);font-size:17px}
+
+/* ---------- project dialog ---------- */
+dialog{border:0;padding:0;background:none;color:var(--ink);max-width:min(580px,calc(100vw - 40px));width:100%;overflow:visible}
+dialog::backdrop{background:rgba(20,10,45,.72)}
+.pm{margin:8px;background:var(--panel);
+  box-shadow:0 -4px 0 0 var(--edge),0 4px 0 0 var(--edge),-4px 0 0 0 var(--edge),4px 0 0 0 var(--edge),inset 4px 4px 0 0 var(--hi),inset -4px -4px 0 0 var(--lo)}
+.pm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 18px 14px;background:var(--pc);color:var(--onacc)}
+.pm-top h3{font-size:17px;margin-bottom:6px}
+.x{font-family:'Press Start 2P','Courier New',monospace;font-size:12px;border:0;padding:8px 10px;background:var(--panel);color:var(--ink);
+  box-shadow:0 -3px 0 0 var(--edge),0 3px 0 0 var(--edge),-3px 0 0 0 var(--edge),3px 0 0 0 var(--edge)}
+.pm-body{padding:18px 20px 12px}
+.pm-body ul{margin:14px 0 10px;padding-left:22px}
+.pm-body li{margin-bottom:6px}
+.pm-body .live{margin-top:12px;color:var(--muted);word-break:break-all}
+.pm-body .live a{color:var(--ink);font-weight:700}
+.pm-body .btns{margin:14px -6px 6px}
+
+/* ---------- small screens ---------- */
+@media (max-width:760px){
+  body{font-size:19px}
+  .player{grid-template-columns:1fr;gap:30px}
+  .exp-head{flex-direction:column;gap:10px}
+  .exp-date{align-self:flex-start}
+  .sheet{padding:22px 20px}
+  .log li{grid-template-columns:30px 1fr;gap:4px 14px}
+  .log .when{grid-column:2}
+  .log .what{grid-column:2}
+  .bar-in{gap:10px}
+  .brand span{display:none}
+  .tools{margin-left:auto}
+}
+@media (prefers-reduced-motion: reduce){
+  .now .box{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#cartridges">Skip the game</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top"><i data-pix="heart" data-size="3"></i><span>Deepika Sharma</span></a>
+    <nav aria-label="Sections">
+      <a href="#player">Player</a>
+      <a href="#cartridges">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#inventory">Inventory</a>
+      <a href="#quests">Quests</a>
+      <a href="#continue">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="chipbtn" id="sfxBtn" aria-pressed="false">Sound off</button>
+      <button class="chipbtn" id="themeBtn">Day mode</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="top">
+    <h1>Hi, I'm Deepika.</h1>
+    <p class="lede">Final-year IT student at PICT, Pune. I like AI projects that end up as real apps you can open and click around in.</p>
+
+    <div class="stage px" id="stage" tabindex="0" role="group"
+         aria-label="Pixel world. Walk to a door to open one of my projects. A and D or the arrow keys walk, W jumps, E opens a door.">
+      <canvas id="world" aria-hidden="true"></canvas>
+      <div id="doors"></div>
+      <div class="hud" aria-hidden="true">
+        <span class="hud-i"><i data-pix="coin" data-size="3"></i><b id="coinN">0</b>/5</span>
+        <span class="hud-i"><i data-pix="door" data-size="3"></i><b id="doorN">0</b>/5</span>
+      </div>
+      <div class="say" id="say"></div>
+      <div class="toast" id="toast" role="status" hidden></div>
+      <div class="pad">
+        <div><button data-k="l" aria-label="Walk left">&lt;</button><button data-k="r" aria-label="Walk right">&gt;</button></div>
+        <div><button data-k="e" aria-label="Open door">E</button><button data-k="j" aria-label="Jump">A</button></div>
+      </div>
+    </div>
+    <p class="keys">Walk with A and D or the arrow keys, jump with W, press E at a door. If the keys do nothing, click the world once. The doors are also real buttons, so tapping one works too.</p>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="player">
+    <h2>Player card</h2>
+    <div class="player">
+      <div class="select px drop">
+        <div class="bubble" id="bubble">hi! poke me</div>
+        <canvas id="portrait" width="18" height="26" aria-label="Pixel portrait of me. Click it for a message."></canvas>
+        <p class="cap">Pick a blazer</p>
+        <div class="swatches" id="swatches"></div>
+      </div>
+      <div class="sheet px drop">
+        <p>I'm in my final year of B.E. Information Technology at PICT. My favourite part of any project is when a model, an API and a screen all have to agree with each other. It's also where most of my bugs live, so I learn a lot there.</p>
+                <dl>
+          <dt>Class</dt><dd>Final-year IT student</dd>
+          <dt>Base</dt><dd>PICT, Pune</dd>
+          <dt>Guild</dt><dd>AWS Cloud Club PICT</dd>
+        </dl>
+        <div class="hp"><span>CGPA</span><div class="hp-bar" role="img" aria-label="CGPA 9.27 out of 10"><i style="width:92.7%"></i></div><b>9.27</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="cartridges">
+    <h2>Projects</h2>
+    <p class="sub">Five cartridges. The live ones open the real site. Anything on Render can take a few seconds to wake up the first time.</p>
+    <div class="shelf" id="shelf"></div>
+    <p class="more">More saves on <a href="https://github.com/Deepika14145" target="_blank" rel="noopener noreferrer">my GitHub</a>:
+      <a href="https://github.com/Deepika14145/DeepFake-Detection" target="_blank" rel="noopener noreferrer">DeepFake Detection</a>,
+      <a href="https://github.com/Deepika14145/VertiasAI" target="_blank" rel="noopener noreferrer">VertiasAI</a>,
+      <a href="https://github.com/Deepika14145/LoanBankingSystem" target="_blank" rel="noopener noreferrer">Loan Banking System</a> and
+      <a href="https://github.com/Deepika14145/DSA" target="_blank" rel="noopener noreferrer">my DSA repo</a>.</p>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="experience">
+    <h2>Experience</h2>
+    <p class="sub">What I'm working on right now, alongside my projects and placement prep.</p>
+
+    <div class="experience-list">
+      <article class="exp-card px drop">
+        <div class="exp-head">
+          <div>
+            <div class="exp-title">DRDO Pune, Research &amp; Development Establishment (Engineers)</div>
+            <div class="exp-role">Project Intern · Pune</div>
+          </div>
+          <div class="exp-date">Jul 2026 · Present</div>
+        </div>
+
+        <ul>
+          <li>Building an offline AI pipeline for a knowledge-driven decision-support system, with a focus on reliable document understanding and retrieval under strict confidentiality requirements.</li>
+          <li>Working with Python, FastAPI, LangChain, RAG and locally hosted LLMs to process documents and support context-aware question answering on DRDO systems.</li>
+          <li>Researching ontology-driven knowledge representation and semantic reasoning to improve how information and services can be connected and retrieved.</li>
+        </ul>
+
+        <div>
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">RAG</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">Ollama</span>
+          <span class="tag">Knowledge Graphs</span>
+          <span class="tag">Semantic Reasoning</span>
+        </div>
+
+        <p class="exp-note">Current internship · Offline/local deployment · Research &amp; development</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="inventory">
+    <h2>Inventory</h2>
+    <p class="sub">Pick a tool to see where I've actually used it.</p>
+    <div class="bag px drop">
+      <div class="tabs" role="tablist" id="tabs" aria-label="Skill groups"></div>
+      <div class="slots" id="slots" role="tabpanel"></div>
+      <p class="detail" id="detail" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="quests">
+    <h2>Quest log</h2>
+    <ol class="log px drop">
+      <li><span class="box done"><i data-pix="check" data-size="3"></i></span><span class="when">Feb to Apr 2026</span><span class="what"><strong>Project Lead, AWS Cloud Club PICT.</strong> Took the AI interview platform from the first commit to a deployed app on AWS.</span></li>
+      <li><span class="box done"><i data-pix="check" data-size="3"></i></span><span class="when">2025</span><span class="what"><strong>GirlScript Summer of Code.</strong> Cleaned up a codebase and cut repeated code by 30%. Finished as Top Contributor and Project Admin.</span></li>
+      <li><span class="box done"><i data-pix="check" data-size="3"></i></span><span class="when">Hackathon</span><span class="what"><strong>Mumbai Hacks finalist.</strong> Our team made the top 5.</span></li>
+      <li><span class="box done"><i data-pix="check" data-size="3"></i></span><span class="when">Jul 2023 to now</span><span class="what"><strong>B.E. Information Technology at PICT.</strong> CGPA 9.27, and a Reliance Foundation Scholar.</span></li>
+      <li class="now"><span class="box" aria-hidden="true"></span><span class="when">Right now</span><span class="what"><strong>Placements.</strong> 300+ DSA problems solved and still going.</span></li>
+    </ol>
+    <div class="badges">
+      <p>Badges:</p>
+      <span class="tag">Python for Data Science</span>
+      <span class="tag">Postman API Fundamentals</span>
+      <span class="tag">Machine Learning (Coursera)</span>
+      <span class="tag">AWS Cloud Primer</span>
+    </div>
+  </section>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <section class="sec wrap" id="continue">
+    <div class="arcade">
+      <p class="count" id="count" aria-hidden="true">9</p>
+      <h2>Continue?</h2>
+      <p class="msg">Got a project, an internship, or a question about something I built? Send me a mail.</p>
+      <div>
+        <a class="btn" href="mailto:sharmadeepi200@gmail.com">Email me</a>
+        <button class="btn alt" id="copyMail" type="button">Copy address</button>
+        <a class="btn ghost" href="https://github.com/Deepika14145" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/deepika-sharma-3b7348219/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <p class="mailtxt" id="mailtxt">sharmadeepi200@gmail.com</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Deepika Sharma, Pune. The world at the top has a cheat code if you know the old one.</footer>
+
+<dialog id="proj" aria-labelledby="pTitle">
+  <div class="pm">
+    <div class="pm-top">
+      <div><h3 id="pTitle"></h3><p id="pKind"></p></div>
+      <button class="x" id="pClose" type="button" aria-label="Close">X</button>
+    </div>
+    <div class="pm-body">
+      <p id="pLine"></p>
+      <ul id="pPts"></ul>
+      <div id="pStack"></div>
+      <p class="live" id="pLive"></p>
+      <div class="btns" id="pBtns"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const root = document.documentElement;
+const EMAIL = 'sharmadeepi200@gmail.com';
+
+/* ---------------- theme ---------------- */
+let theme = null;
+try { theme = localStorage.getItem('dp-theme'); } catch (e) {}
+if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+root.dataset.theme = theme;
+const themeBtn = $('#themeBtn');
+const paintThemeBtn = () => { themeBtn.textContent = theme === 'dark' ? 'Day mode' : 'Night mode'; };
+paintThemeBtn();
+themeBtn.addEventListener('click', () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = theme;
+  try { localStorage.setItem('dp-theme', theme); } catch (e) {}
+  paintThemeBtn();
+});
+
+/* ---------------- tiny pixel-art helpers ---------------- */
+function pix(rows, pal, size) {
+  const h = rows.length, w = rows[0].length;
+  let r = '';
+  rows.forEach((row, y) => { for (let x = 0; x < w; x++) { const c = pal[row[x]]; if (c) r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${c}"/>`; } });
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w * size}" height="${h * size}" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+}
+const ICONS = {
+  coin: { rows: ['..oooo..', '.oyyyyo.', 'oyyhhyyo', 'oyyhyyyo', 'oyyhyyyo', 'oyyyyyyo', '.oyyyyo.', '..oooo..'], pal: { o: '#a8691b', y: '#ffd966', h: '#fff4b8' } },
+  heart: { rows: ['.xx.xx.', 'xhxxxxx', 'xxxxxxx', '.xxxxx.', '..xxx..', '...x...'], pal: { x: '#ff5fa2', h: '#ffc2dd' } },
+  door: { rows: ['.xxxxx.', 'xyyyyyx', 'xyyyyyx', 'xyyyyyx', 'xyyyyyx', 'xyyyyox', 'xyyyyyx', 'xxxxxxx'], pal: { x: '#7d4a2b', y: '#c98c55', o: '#ffd966' } },
+  check: { rows: ['......x', '.....xx', 'x...xx.', 'xx.xx..', '.xxx...', '..x....'], pal: { x: 'currentColor' } }
+};
+$$('[data-pix]').forEach(el => { const ic = ICONS[el.dataset.pix]; if (ic) el.innerHTML = pix(ic.rows, ic.pal, +el.dataset.size || 3); });
+
+// pixel mouse cursor, built from a grid so it matches the rest of the page
+(function () {
+  const rows = ['x.......', 'xx......', 'xxx.....', 'xxxx....', 'xxxxx...', 'xxxxxx..', 'xxxxxxx.', 'xxxxx...', 'xx.xx...', 'x..xx...', '...xx...', '....xx..'];
+  const build = (fill) => {
+    const s = 2, h = rows.length, w = rows[0].length;
+    const on = (x, y) => x >= 0 && y >= 0 && x < w && y < h && rows[y][x] === 'x';
+    let r = '';
+    for (let y = -1; y <= h; y++) for (let x = -1; x <= w; x++) {
+      const c = on(x, y) ? fill : (on(x + 1, y) || on(x - 1, y) || on(x, y + 1) || on(x, y - 1)) ? '#120a2a' : null;
+      if (c) r += `<rect x="${(x + 1) * s}" y="${(y + 1) * s}" width="${s}" height="${s}" fill="${c}"/>`;
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${(w + 2) * s}" height="${(h + 2) * s}" shape-rendering="crispEdges">${r}</svg>`;
+    return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 2 2, auto`;
+  };
+  root.style.setProperty('--cur', build('#ff7ab8'));
+  root.style.setProperty('--cur2', build('#ffd966').replace(', auto', ', pointer'));
+})();
+
+/* ---------------- sound (off until you turn it on) ---------------- */
+let ac = null, sfx = false;
+function tone(f, d, type, v, when) {
+  if (!sfx || !ac) return;
+  const t = ac.currentTime + (when || 0);
+  const o = ac.createOscillator(), gn = ac.createGain();
+  o.type = type || 'square';
+  o.frequency.setValueAtTime(f, t);
+  gn.gain.setValueAtTime(v || .05, t);
+  gn.gain.exponentialRampToValueAtTime(.0001, t + d);
+  o.connect(gn); gn.connect(ac.destination);
+  o.start(t); o.stop(t + d + .02);
+}
+const sfxJump = () => { tone(330, .12); tone(520, .1, 'square', .04, .06); };
+const sfxCoin = () => { tone(988, .08); tone(1319, .18, 'square', .05, .08); };
+const sfxOpen = () => [523, 659, 784].forEach((f, i) => tone(f, .12, 'square', .05, i * .08));
+const sfxBtn = $('#sfxBtn');
+sfxBtn.addEventListener('click', () => {
+  if (!ac) { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return; ac = new AC(); }
+  sfx = !sfx;
+  if (ac.state === 'suspended') ac.resume();
+  sfxBtn.textContent = sfx ? 'Sound on' : 'Sound off';
+  sfxBtn.setAttribute('aria-pressed', String(sfx));
+  if (sfx) sfxCoin();
+});
+
+/* ---------------- content ---------------- */
+const PROJECTS = [
+  { name: 'VARUNA', kind: 'Road safety, computer vision', color: 'pink',
+    line: 'Watches traffic camera footage, spots accidents and changes the signal timing so help can get through.',
+    points: ['YOLO finds vehicles and incidents in the video stream', 'Works on junctions from 2-way up to 6-way', 'Saves evidence clips and has hooks for alerts', 'A React dashboard shows the live status'],
+    stack: ['Python', 'FastAPI', 'YOLO', 'OpenCV', 'React'],
+    live: { label: 'Demo video', show: 'youtube.com/watch?v=X0kgA0yyBOk', url: 'https://www.youtube.com/watch?v=X0kgA0yyBOk', cta: 'Watch demo' },
+    code: 'https://github.com/Deepika14145/VARUNA' },
+  { name: 'IntervAI', kind: 'Mock interviews on AWS', color: 'mint',
+    line: 'Answer interview questions out loud and get feedback on how you sounded, not only what you said.',
+    points: ['AWS Transcribe turns speech into text and Polly reads out the questions', 'The AI engine scores fluency, confidence and keyword relevance', 'Backend runs on Lambda, DynamoDB and S3', 'I led the team that built it at AWS Cloud Club PICT'],
+    stack: ['React', 'Node.js', 'AWS', 'Transcribe', 'Polly'],
+    live: { label: 'Live', show: 'intervai-dwbr.onrender.com', url: 'https://intervai-dwbr.onrender.com', cta: 'Open live site' },
+    code: 'https://github.com/Deepika14145/Intervirew_prep' },
+  { name: 'PharmaGuard', kind: 'Hackathon, health tech', color: 'butter',
+    line: "A hackathon build that looks at how a drug might react with a person's genes.",
+    points: ['React, Vite and Tailwind on the front', 'Node and Express API behind it', 'UI and API are kept separate so the ML service can plug in later'],
+    stack: ['React', 'Vite', 'Tailwind', 'Express'],
+    live: { label: 'Live', show: 'pharmaai-9znr.onrender.com', url: 'https://pharmaai-9znr.onrender.com', cta: 'Open live site' },
+    code: 'https://github.com/Deepika14145/pharmaAI' },
+  { name: 'QuickFactChecker', kind: 'Fake news detection, open source', color: 'sky',
+    line: 'Checks how credible a piece of news looks. Other people contribute to it as well.',
+    points: ['Tried Naive Bayes, Logistic Regression, Random Forest and an LSTM', 'Part of GSSoC 2025, so it has contributors and 32 forks', 'Flask web app deployed on Render'],
+    stack: ['Python', 'Flask', 'NLTK', 'scikit-learn'],
+    live: { label: 'Live', show: 'quickfactchecker01.onrender.com', url: 'https://quickfactchecker01.onrender.com/', cta: 'Open live site' },
+    code: 'https://github.com/Deepika14145/QuickFactChecker' },
+  { name: 'CodeAtlas AI', kind: 'Developer tools, C++', color: 'coral',
+    line: 'Give it a GitHub repo and it maps how the code depends on itself.',
+    points: ["A C++ engine clones the repo and builds a dependency graph using DFS, BFS and Tarjan's algorithm", 'Finds dead code, circular dependencies and duplicate functions in repos with 200+ files', 'React and TypeScript dashboard with an interactive graph and PDF or Markdown reports'],
+    stack: ['C++', 'React', 'TypeScript', 'Cytoscape.js'],
+    live: null,
+    code: 'https://github.com/Deepika14145/CodeAtlas-AI' }
+];
+
+const liveHTML = p => p.live
+  ? `${p.live.label}: <a href="${p.live.url}" target="_blank" rel="noopener noreferrer">${p.live.show}</a>`
+  : 'Live: not hosted yet, the code is on GitHub.';
+const btnsHTML = p => (p.live ? `<a class="btn sm" href="${p.live.url}" target="_blank" rel="noopener noreferrer">${p.live.cta}</a>` : '')
+  + `<a class="btn sm ghost" href="${p.code}" target="_blank" rel="noopener noreferrer">Code</a>`;
+
+$('#shelf').innerHTML = PROJECTS.map((p, i) => `
+  <article class="cart px drop" style="--pc:var(--${p.color})">
+    <div class="label"><h3>${p.name}</h3><p class="kind">${p.kind}</p></div>
+    <div class="body">
+      <p>${p.line}</p>
+      <div>${p.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+      <p class="live">${liveHTML(p)}</p>
+      <div class="btns">${btnsHTML(p)}<button class="btn sm ghost" type="button" data-more="${i}">Details</button></div>
+    </div>
+    <div class="pins" aria-hidden="true"></div>
+  </article>`).join('');
+$$('[data-more]').forEach(b => b.addEventListener('click', () => openProject(+b.dataset.more)));
+
+/* ---------------- project dialog ---------------- */
+const dlg = $('#proj');
+const visited = new Set();
+function openProject(i) {
+  const p = PROJECTS[i];
+  visited.add(i);
+  $('#doorN').textContent = visited.size;
+  $('#pTitle').textContent = p.name;
+  $('#pKind').textContent = p.kind;
+  $('#pLine').textContent = p.line;
+  $('#pPts').innerHTML = p.points.map(x => `<li>${x}</li>`).join('');
+  $('#pStack').innerHTML = p.stack.map(s => `<span class="tag">${s}</span>`).join('');
+  $('#pLive').innerHTML = liveHTML(p);
+  $('#pBtns').innerHTML = btnsHTML(p);
+  dlg.style.setProperty('--pc', `var(--${p.color})`);
+  g.locked = true; keys.l = 0; keys.r = 0;
+  if (!dlg.open) dlg.showModal();
+  sfxOpen();
+  checkWin();
+}
+$('#pClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('close', () => { g.locked = false; });
+
+/* ---------------- the girl: drawn pixel by pixel ---------------- */
+const OUT = '#120a2a';
+const BLAZERS = [
+  { n: 'Mint', c: '#6df2c8', s: '#3fc79e' }, { n: 'Pink', c: '#ff7ab8', s: '#d9508f' },
+  { n: 'Sky', c: '#6ab8ff', s: '#3f8ede' }, { n: 'Butter', c: '#ffd966', s: '#e0b23a' }, { n: 'Lilac', c: '#b79cff', s: '#8a6de0' }
+];
+let blazerIdx = 0;
+const C = { hair: '#3b2147', hairHi: '#7a4a8a', skin: '#ffd3b4', skinSh: '#f0ad8b', blush: '#ff8fb3', eye: '#1a1030', frame: '#ffd966',
+  mouth: '#c4476f', shirt: '#fff3e6', pants: '#5b4bb0', shoe: '#ff7ab8', lan: '#ff7ab8', badge: '#ffd966' };
+const SW = 16, SH = 24;
+const sprCache = new Map();
+function sprite(blink, step) {
+  const key = blazerIdx + '|' + blink + '|' + step;
+  if (sprCache.has(key)) return sprCache.get(key);
+  const bl = BLAZERS[blazerIdx];
+  const g2 = Array.from({ length: SH }, () => Array(SW).fill(null));
+  const P = (x, y, c) => { if (x >= 0 && x < SW && y >= 0 && y < SH) g2[y][x] = c; };
+  const R = (x1, x2, y, c) => { for (let x = x1; x <= x2; x++) P(x, y, c); };
+  // arms first, the hair is drawn over any overlap
+  const aL = step === 1 ? -1 : step === 2 ? 1 : 0, aR = -aL;
+  for (let y = 13; y <= 17; y++) {
+    R(2, 3, y + aL, bl.c); P(3, y + aL, bl.s);
+    R(12, 13, y + aR, bl.c); P(12, y + aR, bl.s);
+  }
+  R(2, 3, 18 + aL, C.skin); R(12, 13, 18 + aR, C.skin);
+  // blazer, shirt, badge
+  for (let y = 12; y <= 17; y++) { R(4, 11, y, bl.c); P(11, y, bl.s); }
+  P(6, 12, C.shirt); P(9, 12, C.shirt); P(7, 12, C.skin); P(8, 12, C.skin);
+  for (let y = 13; y <= 16; y++) R(7, 8, y, C.shirt);
+  P(9, 13, C.lan); P(9, 14, C.lan); R(9, 10, 15, C.badge); R(9, 10, 16, C.badge);
+  R(4, 11, 18, C.pants);
+  // legs
+  const lh = step === 1 ? 3 : 4, rh = step === 2 ? 3 : 4;
+  for (let i = 0; i < lh; i++) R(5, 6, 19 + i, i < 1 ? C.pants : C.skin);
+  R(4, 6, 19 + lh, C.shoe);
+  for (let i = 0; i < rh; i++) R(9, 10, 19 + i, i < 1 ? C.pants : C.skin);
+  R(9, 11, 19 + rh, C.shoe);
+  // head
+  R(5, 10, 0, C.hair); R(3, 12, 1, C.hair); R(2, 13, 2, C.hair); R(2, 13, 3, C.hair);
+  for (let y = 4; y <= 10; y++) R(4, 11, y, C.skin);
+  R(5, 10, 11, C.skin);
+  for (let y = 4; y <= 12; y++) { R(2, 3, y, C.hair); R(12, 13, y, C.hair); }
+  R(4, 7, 4, C.hair);
+  P(5, 1, C.hairHi); P(6, 1, C.hairHi); P(4, 2, C.hairHi); P(11, 2, C.shoe); P(12, 2, C.shoe);
+  // round glasses with eyes inside
+  R(4, 6, 5, C.frame); R(9, 11, 5, C.frame);
+  for (const y of [6, 7]) { P(4, y, C.frame); P(6, y, C.frame); P(9, y, C.frame); P(11, y, C.frame); }
+  R(4, 6, 8, C.frame); R(9, 11, 8, C.frame); P(7, 6, C.frame); P(8, 6, C.frame);
+  if (blink) { P(5, 6, C.skin); P(10, 6, C.skin); P(5, 7, C.eye); P(10, 7, C.eye); }
+  else { P(5, 6, C.eye); P(5, 7, C.eye); P(10, 6, C.eye); P(10, 7, C.eye); }
+  P(5, 9, C.blush); P(10, 9, C.blush);
+  P(6, 9, C.mouth); P(9, 9, C.mouth); P(7, 10, C.mouth); P(8, 10, C.mouth);
+  // outline pass, then paint to a small canvas
+  const cv = document.createElement('canvas'); cv.width = SW + 2; cv.height = SH + 2;
+  const x2 = cv.getContext('2d');
+  const at = (x, y) => (x >= 0 && x < SW && y >= 0 && y < SH) ? g2[y][x] : null;
+  for (let y = -1; y <= SH; y++) for (let x = -1; x <= SW; x++) {
+    const c = at(x, y);
+    if (c) { x2.fillStyle = c; x2.fillRect(x + 1, y + 1, 1, 1); }
+    else if (at(x + 1, y) || at(x - 1, y) || at(x, y + 1) || at(x, y - 1)) { x2.fillStyle = OUT; x2.fillRect(x + 1, y + 1, 1, 1); }
+  }
+  sprCache.set(key, cv);
+  return cv;
+}
+
+/* ---------------- portrait + blazer picker ---------------- */
+const pCtx = $('#portrait').getContext('2d');
+pCtx.imageSmoothingEnabled = false;
+function paintPortrait(blink) { pCtx.clearRect(0, 0, 18, 26); pCtx.drawImage(sprite(blink ? 1 : 0, 0), 0, 0); }
+paintPortrait(false);
+if (!RM) setInterval(() => { paintPortrait(true); setTimeout(() => paintPortrait(false), 140); }, 3200);
+const sw = $('#swatches');
+sw.innerHTML = BLAZERS.map((b, i) => `<button class="sw" type="button" data-i="${i}" style="background:${b.c}" aria-label="Blazer colour: ${b.n}" aria-pressed="${i === 0}"></button>`).join('');
+sw.addEventListener('click', e => {
+  const b = e.target.closest('.sw'); if (!b) return;
+  blazerIdx = +b.dataset.i; sprCache.clear(); paintPortrait(false);
+  $$('.sw', sw).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  tone(660, .08);
+});
+const LINES = ['hi! poke me', 'the doors up top open my projects', 'yes, the coins do something', 'i debug by explaining the bug out loud', 'try the old cheat code on the world up there', 'blazer colour is the only thing i let you change'];
+let li = 0;
+$('#portrait').addEventListener('click', () => { li = (li + 1) % LINES.length; $('#bubble').textContent = LINES[li]; tone(784, .07); });
+
+/* ---------------- the world ---------------- */
+const stage = $('#stage'), cv = $('#world'), ctx = cv.getContext('2d');
+const W = 240, H = 135, GY = 112;
+cv.width = W; cv.height = H; ctx.imageSmoothingEnabled = false;
+const COL = { pink: '#ff7ab8', mint: '#6df2c8', butter: '#ffd966', sky: '#6ab8ff', lav: '#b79cff', coral: '#ff9a76' };
+const shade = (hex, f) => { const n = parseInt(hex.slice(1), 16); return `rgb(${(n >> 16 & 255) * f | 0},${(n >> 8 & 255) * f | 0},${(n & 255) * f | 0})`; };
+const PAL = {
+  dark: { sky: ['#150c2e', '#1d1240', '#2a1856', '#3c1f6b', '#55287c', '#7a3585', '#a64490', '#d65a9a'], far: '#2a1a52', farWin: '#ffd966',
+    grass: '#4fe3b0', grass2: '#2fb98a', dirt: '#4b3485', dirt2: '#3d2a70', pave: '#6b5aa8', pave2: '#5a4a96', cloud: '#4a2f7d', win: '#ffe28a', door: '#2b1650' },
+  light: { sky: ['#7fd4ff', '#98dcff', '#b4e4ff', '#cdeeff', '#e3f5ff', '#fff1d6', '#ffe3c2', '#ffd1c9'], far: '#c3b2f2', farWin: '#e9e0ff',
+    grass: '#7fe08a', grass2: '#53c264', dirt: '#e8b07a', dirt2: '#d79c63', pave: '#f5d9b8', pave2: '#e8c79e', cloud: '#ffffff', win: '#bfe6ff', door: '#6b3b2a' }
+};
+let seed = 7;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const STARS = Array.from({ length: 40 }, () => ({ x: rnd() * W | 0, y: rnd() * 72 | 0 }));
+const TOWERS = []; for (let sx = -12; sx < W + 12;) { const w = 10 + (rnd() * 12 | 0), h = 22 + (rnd() * 36 | 0); TOWERS.push({ x: sx, w, h }); sx += w + 2 + (rnd() * 4 | 0); }
+const CLOUDS = [{ x: 30, y: 24, s: .012 }, { x: 120, y: 44, s: .008 }, { x: 190, y: 30, s: .015 }];
+
+const B = PROJECTS.map((p, i) => ({ x: 12 + i * 44, w: 30, h: [46, 54, 42, 58, 48][i], col: COL[p.color] }));
+const COINS = B.map((b, i) => ({ x: b.x + 15, y: [84, 76, 90, 70, 78][i], got: false }));
+
+const R = (x, y, w, h, c) => { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); };
+const frameBox = (x, y, w, h) => { R(x - 1, y - 1, w + 2, 1, OUT); R(x - 1, y + h, w + 2, 1, OUT); R(x - 1, y, 1, h, OUT); R(x + w, y, 1, h, OUT); };
+
+const skyCache = {};
+function paintSky(c, bands) {
+  bands.forEach((col, i) => { c.fillStyle = col; c.fillRect(0, i * 14, W, 14); });
+  for (let i = 1; i < bands.length; i++) for (let x = 0; x < W; x++) {
+    if ((x + i) % 2 === 0) { c.fillStyle = bands[i]; c.fillRect(x, i * 14 - 1, 1, 1); }
+    else { c.fillStyle = bands[i - 1]; c.fillRect(x, i * 14, 1, 1); }
+  }
+}
+function skyFor(t) {
+  if (!skyCache[t]) { const c = document.createElement('canvas'); c.width = W; c.height = GY; paintSky(c.getContext('2d'), PAL[t].sky); skyCache[t] = c; }
+  return skyCache[t];
+}
+
+const g = { x: RM ? 28 : -18, y: GY, vy: 0, face: 1, ground: true, t: 0, jumps: 0, auto: null, autoIdx: null, locked: false, intro: !RM, blink: false };
+const keys = { l: 0, r: 0 };
+let frame = 0, near = -1, coinN = 0, won = false, dbl = false, party = 0, visible = true;
+const parts = [];
+const HINT = 'Walk to a door. Grab the coins.';
+
+const doorsEl = $('#doors');
+B.forEach((b, i) => {
+  const el = document.createElement('button');
+  el.type = 'button'; el.className = 'door';
+  el.setAttribute('aria-label', 'Open project: ' + PROJECTS[i].name);
+  el.style.left = (b.x / W * 100) + '%';
+  el.style.top = ((GY - b.h - 6) / H * 100) + '%';
+  el.style.width = (b.w / W * 100) + '%';
+  el.style.height = ((b.h + 6) / H * 100) + '%';
+  el.innerHTML = `<span>${PROJECTS[i].name}</span>`;
+  el.addEventListener('click', e => {
+    if (e.detail === 0 || RM) { openProject(i); return; }
+    g.intro = false; g.auto = b.x + 15; g.autoIdx = i;
+  });
+  doorsEl.appendChild(el);
+});
+
+const sayEl = $('#say');
+const say = t => { sayEl.textContent = t; sayEl.hidden = !t; };
+say(HINT);
+function paintNear() {
+  $$('.door').forEach((d, i) => d.classList.toggle('near', i === near));
+  say(near >= 0 ? `${PROJECTS[near].name}: press E, or tap the door` : HINT);
+}
+const toastEl = $('#toast'); let toastT = 0;
+function toast(html) {
+  toastEl.innerHTML = html; toastEl.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => { toastEl.hidden = true; }, 7000);
+}
+function burst(x, y, col, n) {
+  for (let i = 0; i < n; i++) parts.push({ x, y, vx: (Math.random() - .5) * 2.4, vy: -Math.random() * 2 - .4, life: 28 + Math.random() * 14, c: col });
+}
+function confetti(n) {
+  const cols = ['#ff7ab8', '#6df2c8', '#ffd966', '#6ab8ff', '#b79cff'];
+  for (let i = 0; i < n; i++) parts.push({ x: Math.random() * W, y: -4, vx: (Math.random() - .5) * .8, vy: Math.random() * 1.2, life: 90 + Math.random() * 40, c: cols[i % 5] });
+}
+function checkWin() {
+  if (!won && coinN === COINS.length && visited.size === PROJECTS.length) {
+    won = true; confetti(70);
+    toast('Completionist. Every coin found and every door opened. <a href="#continue">Say hi?</a>');
+  }
+}
+function collect(c) {
+  c.got = true; coinN++; $('#coinN').textContent = coinN;
+  burst(c.x, c.y, '#ffd966', 10); sfxCoin();
+  if (coinN === COINS.length && !won) toast('All 5 coins. Now see if you can open every door.');
+  checkWin();
+}
+function jump() {
+  if (g.locked || g.intro) return;
+  if (g.ground || (dbl && g.jumps < 2)) { g.vy = -5.4; g.ground = false; g.jumps++; sfxJump(); }
+}
+function interact() { if (near >= 0 && !g.locked && !g.intro) openProject(near); }
+
+function update() {
+  frame++;
+  let dir = 0;
+  if (g.intro) { dir = 1; if (g.x >= 28) g.intro = false; }
+  else if (!g.locked) {
+    dir = (keys.r ? 1 : 0) - (keys.l ? 1 : 0);
+    if (dir) g.auto = null;
+    else if (g.auto !== null) {
+      const d = g.auto - g.x;
+      if (Math.abs(d) < 1.3) { const i = g.autoIdx; g.auto = null; g.autoIdx = null; openProject(i); }
+      else dir = d > 0 ? 1 : -1;
+    }
+  }
+  if (dir) { g.face = dir; g.x += dir * 1.25; }
+  if (!g.intro) g.x = Math.max(6, Math.min(W - 6, g.x));
+  g.vy += .34; g.y += g.vy;
+  if (g.y >= GY) { g.y = GY; g.vy = 0; g.ground = true; g.jumps = 0; } else g.ground = false;
+  g.t = dir && g.ground ? g.t + 1 : 0;
+  let n = -1;
+  if (!g.intro && !g.locked) B.forEach((b, i) => { if (Math.abs(g.x - (b.x + 15)) < 8) n = i; });
+  if (n !== near) { near = n; paintNear(); }
+  COINS.forEach(c => { if (!c.got && Math.abs(g.x - c.x) < 8 && c.y > g.y - 25 && c.y < g.y) collect(c); });
+  for (let i = parts.length - 1; i >= 0; i--) { const p = parts[i]; p.x += p.vx; p.y += p.vy; p.vy += .08; if (--p.life <= 0) parts.splice(i, 1); }
+  if (party > 0) { party--; if (frame % 2 === 0) confetti(1); }
+  g.blink = (frame % 210) < 9;
+}
+
+function draw() {
+  const T = PAL[theme];
+  // sky
+  if (party > 0) {
+    const bands = T.sky.map((_, i) => `hsl(${(frame * 4 + i * 28) % 360} 80% ${theme === 'dark' ? 45 : 70}%)`);
+    paintSky(ctx, bands);
+  } else ctx.drawImage(skyFor(theme), 0, 0);
+  // stars or sun/moon
+  if (theme === 'dark') {
+    STARS.forEach((s, i) => {
+      const tw = RM ? 0 : ((frame / 24 | 0) + i) % 9;
+      R(s.x, s.y, 1, 1, tw === 0 ? '#ff9cd0' : tw < 3 ? '#ffffff' : '#c9b8ff');
+    });
+    for (let dy = -9; dy <= 9; dy++) for (let dx = -9; dx <= 9; dx++) if (dx * dx + dy * dy <= 81) R(196 + dx, 28 + dy, 1, 1, '#fff3d6');
+    R(192, 24, 3, 3, '#e6d7b8'); R(200, 31, 4, 4, '#e6d7b8'); R(195, 34, 2, 2, '#e6d7b8');
+  } else {
+    for (let dy = -8; dy <= 8; dy++) for (let dx = -8; dx <= 8; dx++) if (dx * dx + dy * dy <= 64) R(196 + dx, 28 + dy, 1, 1, '#ffd24d');
+    [[0, -12], [0, 12], [-12, 0], [12, 0], [-9, -9], [9, 9], [-9, 9], [9, -9]].forEach(([dx, dy]) => R(196 + dx, 28 + dy, 2, 2, '#ffd24d'));
+  }
+  // clouds
+  CLOUDS.forEach(c => {
+    const cx = RM ? c.x : (c.x + frame * c.s * 10) % (W + 40) - 20;
+    R(cx, c.y, 18, 4, T.cloud); R(cx + 3, c.y - 3, 10, 3, T.cloud); R(cx + 8, c.y - 5, 6, 3, T.cloud);
+  });
+  // far skyline with a little parallax
+  const ox = -(g.x - W / 2) * .06;
+  TOWERS.forEach((t, i) => {
+    R(t.x + ox, GY - t.h, t.w, t.h, T.far);
+    for (let wy = 0; wy < t.h - 4; wy += 6) for (let wx = 2; wx < t.w - 2; wx += 4) {
+      if ((i * 7 + wx * 3 + wy * 5) % 5 === 0) R(t.x + ox + wx, GY - t.h + 3 + wy, 2, 2, T.farWin);
+    }
+  });
+  // project buildings
+  B.forEach((b, i) => {
+    const y0 = GY - b.h, isNear = i === near;
+    R(b.x, y0, b.w, b.h, b.col);
+    R(b.x + b.w - 4, y0, 4, b.h, shade(b.col, .82));
+    R(b.x - 2, y0 - 4, b.w + 4, 4, shade(b.col, .62));
+    R(b.x + 2, y0 - 6, b.w - 4, 2, shade(b.col, .62));
+    frameBox(b.x, y0, b.w, b.h);
+    for (let wy = y0 + 8; wy < GY - 22; wy += 14) { R(b.x + 5, wy, 6, 6, T.win); R(b.x + 19, wy, 6, 6, T.win); R(b.x + 7, wy, 1, 6, 'rgba(0,0,0,.18)'); R(b.x + 21, wy, 1, 6, 'rgba(0,0,0,.18)'); }
+    R(b.x + 11, GY - 14, 8, 14, isNear ? '#fff3b0' : T.door);
+    R(b.x + 10, GY - 15, 10, 1, OUT);
+    R(b.x + 17, GY - 7, 1, 1, isNear ? '#c98c55' : '#ffd966');
+  });
+  // ground
+  R(0, GY, W, H - GY, T.dirt);
+  for (let x = 0; x < W; x += 6) { R(x, GY - 1, 3, 1, T.grass); }
+  R(0, GY, W, 3, T.grass); R(0, GY + 3, W, 1, T.grass2);
+  R(0, GY + 5, W, 7, T.pave); for (let x = 4; x < W; x += 16) R(x, GY + 8, 7, 1, T.pave2);
+  for (let i = 0; i < 60; i++) R((i * 37) % W, GY + 13 + (i * 11) % 9, 2, 1, T.dirt2);
+  // coins
+  COINS.forEach((c, i) => {
+    if (c.got) return;
+    const cw = RM ? 5 : [5, 4, 2, 4][(frame / 10 | 0) % 4];
+    const cy = c.y + (RM ? 0 : Math.round(Math.sin(frame / 20 + i) * 1.5));
+    const x0 = c.x - (cw >> 1);
+    R(x0, cy - 3, cw, 6, '#a8691b'); R(x0 + 1, cy - 2, Math.max(cw - 2, 0), 4, '#ffd966');
+    if (cw >= 4) R(x0 + 1, cy - 2, 1, 3, '#fff4b8');
+  });
+  // her
+  const st = !g.ground ? 0 : (g.t ? ((g.t / 7 | 0) % 2) + 1 : 0);
+  const spr = sprite(g.blink ? 1 : 0, st);
+  const dx = Math.round(g.x), dy = Math.round(g.y);
+  const sh = Math.max(0, 1 - (GY - g.y) / 50);
+  ctx.fillStyle = `rgba(0,0,0,${.3 * sh})`; ctx.fillRect(dx - 6, GY + 1, 12, 2);
+  ctx.save(); ctx.translate(dx, dy - 25); if (g.face < 0) ctx.scale(-1, 1); ctx.drawImage(spr, -9, 0); ctx.restore();
+  // particles
+  parts.forEach(p => R(p.x, p.y, 2, 2, p.c));
+}
+
+let last = 0, acc = 0;
+new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0 }).observe(stage);
+function loop(ts) {
+  requestAnimationFrame(loop);
+  if (!visible || document.hidden) { last = ts; return; }
+  acc += Math.min(ts - last, 100); last = ts;
+  while (acc >= 1000 / 60) { update(); acc -= 1000 / 60; }
+  draw();
+}
+requestAnimationFrame(loop);
+
+/* ---------------- controls ---------------- */
+const SEQ = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let ki = 0;
+function konami(k) {
+  if (k === SEQ[ki]) { ki++; if (ki === SEQ.length) { ki = 0; dbl = true; party = 360; toast('Cheat on: double jump and a lot of confetti.'); sfxOpen(); } }
+  else ki = k === SEQ[0] ? 1 : 0;
+}
+addEventListener('keydown', e => {
+  if (dlg.open) return;
+  if (e.target.closest && e.target.closest('input,textarea,select')) return;
+  const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  konami(k);
+  const onStage = document.activeElement === stage;
+  if (k === 'ArrowLeft' || k === 'a') { keys.l = 1; if (onStage) e.preventDefault(); }
+  else if (k === 'ArrowRight' || k === 'd') { keys.r = 1; if (onStage) e.preventDefault(); }
+  else if (k === 'w' || ((k === 'ArrowUp' || k === ' ') && onStage)) { if (onStage) e.preventDefault(); if (visible) jump(); }
+  else if (k === 'e' || (k === 'Enter' && onStage)) { if (visible) interact(); }
+});
+addEventListener('keyup', e => {
+  const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  if (k === 'ArrowLeft' || k === 'a') keys.l = 0;
+  if (k === 'ArrowRight' || k === 'd') keys.r = 0;
+});
+addEventListener('blur', () => { keys.l = 0; keys.r = 0; });
+$$('.pad [data-k]').forEach(b => {
+  const k = b.dataset.k;
+  const set = v => { if (k === 'l') keys.l = v; else if (k === 'r') keys.r = v; else if (v && k === 'j') jump(); else if (v && k === 'e') interact(); };
+  b.addEventListener('pointerdown', e => { e.preventDefault(); set(1); });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => b.addEventListener(ev, () => set(0)));
+});
+
+/* ---------------- inventory ---------------- */
+const BAGS = [
+  { n: 'Languages', items: [
+    ['Java', 'Ja', 'the Loan Banking System'], ['Python', 'Py', 'VARUNA, QuickFactChecker and the DeepFake Detection model'],
+    ['C++', 'C+', 'CodeAtlas AI and most of my DSA practice'], ['JavaScript', 'JS', 'IntervAI, PharmaGuard and my GSSoC work'],
+    ['TypeScript', 'TS', 'the CodeAtlas AI dashboard'], ['SQL', 'SQL', 'the Loan Banking System on MySQL'] ] },
+  { n: 'Web', items: [
+    ['React', 'Re', 'IntervAI, PharmaGuard and the VARUNA dashboard'], ['Node.js', 'No', 'IntervAI and PharmaGuard'],
+    ['Express', 'Ex', 'the PharmaGuard API and the IntervAI backend'], ['FastAPI', 'Fa', 'VARUNA and VertiasAI'],
+    ['Flask', 'Fl', 'QuickFactChecker'], ['Tailwind', 'Tw', 'PharmaGuard and CodeAtlas AI'] ] },
+  { n: 'AI and data', items: [
+    ['TensorFlow', 'TF', 'DeepFake Detection, a CNN that reached 91% accuracy'], ['OpenCV', 'CV', 'VARUNA and my face recognition scripts'],
+    ['YOLO', 'YO', 'VARUNA, for spotting vehicles and accidents'], ['scikit-learn', 'SK', 'the QuickFactChecker models'],
+    ['Streamlit', 'St', 'the DeepFake Detection demo'], ['NLP', 'NL', 'IntervAI feedback and QuickFactChecker'] ] },
+  { n: 'Cloud and tools', items: [
+    ['AWS', 'AW', 'IntervAI: Lambda, DynamoDB, S3, Transcribe and Polly'], ['Docker', 'Dk', 'VertiasAI'],
+    ['Git', 'Gi', 'open source work with GSSoC'], ['MongoDB', 'Mo', 'my MongoDB practice repo on GitHub'],
+    ['MySQL', 'My', 'the Loan Banking System'], ['PostgreSQL', 'Pg', 'VertiasAI audit storage'] ] }
+];
+const ACC = ['pink', 'mint', 'butter', 'sky', 'lav', 'coral'];
+let bag = 0;
+const tabsEl = $('#tabs'), slotsEl = $('#slots'), detailEl = $('#detail');
+function renderBag() {
+  tabsEl.innerHTML = BAGS.map((b, i) => `<button type="button" role="tab" aria-selected="${i === bag}" data-b="${i}">${b.n}</button>`).join('');
+  slotsEl.innerHTML = BAGS[bag].items.map((it, i) =>
+    `<button type="button" class="slot" style="--c:var(--${ACC[i % 6]})" aria-pressed="false" data-s="${i}"><b>${it[1]}</b><span>${it[0]}</span></button>`).join('');
+  pick(0);
+}
+function pick(i) {
+  const it = BAGS[bag].items[i];
+  $$('.slot', slotsEl).forEach((s, j) => s.setAttribute('aria-pressed', String(i === j)));
+  detailEl.innerHTML = `<b>${it[0]}</b>: I've used it in ${it[2]}.`;
+}
+tabsEl.addEventListener('click', e => { const b = e.target.closest('[data-b]'); if (b) { bag = +b.dataset.b; renderBag(); tone(520, .06); } });
+slotsEl.addEventListener('click', e => { const s = e.target.closest('[data-s]'); if (s) { pick(+s.dataset.s); tone(740, .06); } });
+renderBag();
+
+/* ---------------- small things ---------------- */
+const links = $$('.bar nav a');
+const navIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  links.forEach(a => { if (a.hash === '#' + e.target.id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+}), { rootMargin: '-40% 0px -55% 0px' });
+$$('main section[id]').forEach(s => navIO.observe(s));
+
+$('#copyMail').addEventListener('click', async () => {
+  const btn = $('#copyMail');
+  try { await navigator.clipboard.writeText(EMAIL); btn.textContent = 'Copied'; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents($('#mailtxt'));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press Ctrl+C';
+  }
+  setTimeout(() => { btn.textContent = 'Copy address'; }, 2200);
+});
+if (!RM) { let n = 9; const el = $('#count'); setInterval(() => { n = n === 0 ? 9 : n - 1; el.textContent = n; }, 1000); }
+})();
+</script>
+</body>
+</html>
